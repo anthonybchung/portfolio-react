@@ -2,6 +2,7 @@ import './App.styles.scss';
 import NavBar from '../nav-bar/nav-bar.component';
 import SlideProject from '../slide-project/slide-project.component';
 import WorkExperience from '../work-experience/work-experience.component';
+import RobotProject from '../robot/robot-project.component';
 
 function App() {
   return (

@@ -15,10 +15,19 @@
   margin: 4px 0px;
 }
 
+.project-button-container {
+  height: 100%;
+  padding-top: 5px;
+  padding-left: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 .project-button {
   width: 280px;
   height: 75px;
-  margin: 4px 4px;
+  padding: 5px;
   border-radius: 4px;
   border-style: solid;
   border-width: 1px;

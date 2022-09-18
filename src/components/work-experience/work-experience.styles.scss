@@ -24,6 +24,18 @@
   border-width: 1px;
   border-color: rgba(0, 0, 0, 0.1);
 
+  &:hover {
+    cursor: pointer;
+    scale: 1.01;
+    border-width: 2px;
+  }
+
+  &:active {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-top-width: 3px;
+    border-top-color: rgba(86, 86, 86, 0.268);
+  }
+
   li {
     list-style: none;
   }
