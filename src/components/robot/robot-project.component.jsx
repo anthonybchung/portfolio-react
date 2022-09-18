@@ -4,7 +4,9 @@ import { useState } from 'react';
 
 const RobotProject = () => {
   const cellArray = Array(25).fill('cell');
-  const cells = cellArray.map(() => <div className="cell"></div>);
+  const cells = cellArray.map((element, index) => (
+    <div className="cell" key={index}></div>
+  ));
 
   const [robotPosition, setRobotPosition] = useState({ x: 0, y: 0, f: 0 });
 
@@ -19,6 +21,7 @@ const RobotProject = () => {
   const leftHandler = () => {
     const newDirection = robotPosition.f - 90;
     setRobotPosition((prev) => ({ ...prev, f: newDirection }));
+    console.log(`newDirection:${newDirection}`);
   };
 
   const rightHandler = () => {
@@ -33,15 +36,19 @@ const RobotProject = () => {
       90: [1, 0],
       180: [0, -1],
       270: [-1, 0],
+      '-90': [-1, 0],
+      '-180': [0, -1],
+      '-270': [1, 0],
     };
 
-    let newX = robotPosition.x + move[currentDirection][0];
-    let newY = robotPosition.y + move[currentDirection][1];
+    console.log(`currentDirection:${currentDirection}`);
+    const newX = robotPosition.x + move[currentDirection][0];
+    const newY = robotPosition.y + move[currentDirection][1];
+
     if (newX >= 0 && newX < 5)
       setRobotPosition((prev) => ({ ...prev, x: newX }), []);
     if (newY >= 0 && newY < 5)
       setRobotPosition((prev) => ({ ...prev, y: newY }), []);
-    console.log(robotPosition);
   };
 
   return (
@@ -53,9 +60,11 @@ const RobotProject = () => {
         style={robotStyle}
       ></img>
       {cells}
-      <button onClick={leftHandler}>Left</button>
-      <button onClick={moveHandler}>Move</button>
-      <button onClick={rightHandler}>Right</button>
+      <div className="robot-controller">
+        <button onClick={leftHandler}>Left</button>
+        <button onClick={moveHandler}>Move</button>
+        <button onClick={rightHandler}>Right</button>
+      </div>
     </div>
   );
 };
