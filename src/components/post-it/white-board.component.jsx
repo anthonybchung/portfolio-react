@@ -31,32 +31,25 @@ const WhiteBoard = () => {
     setDragId(id);
   };
 
-  const dragEnter = () => {
-    console.log('drag enter');
-  };
-
-  const dragEnd = () => {
-    console.log('drag end');
-  };
-
   const dragOver = (event) => {
     event.preventDefault();
-    console.log('drag over');
   };
 
   const dragDrop = (event) => {
     const status = event.target.id;
+
     //find index containing dragId.
     const currentCard = (element) => {
       return element.id === dragId;
     };
 
     const currentIndex = CardList.findIndex(currentCard);
-
     setCardList((prev) => {
       const array = [...prev];
       const element = array[currentIndex];
-      const newValue = { ...element, status: status };
+
+      let newValue = element;
+      if (status !== '') newValue = { ...element, status: status };
       array[currentIndex] = newValue;
       return array;
     });
@@ -64,13 +57,13 @@ const WhiteBoard = () => {
 
   return (
     <div className="white-container">
+      <h2>Drag and Drop</h2>
       <div className="white-board">
         <div
           id="doing"
           className="white-board-container"
           onDrop={dragDrop}
           onDragOver={dragOver}
-          onDragEnter={dragEnter}
         >
           {CardList.map(
             (element) =>
@@ -79,7 +72,6 @@ const WhiteBoard = () => {
                   key={element.id}
                   card={element}
                   dragStart={dragStart}
-                  dragEnd={dragEnd}
                 />
               )
           )}
@@ -89,7 +81,6 @@ const WhiteBoard = () => {
           className="white-board-container"
           onDragOver={dragOver}
           onDrop={dragDrop}
-          onDragEnter={dragEnter}
         >
           {CardList.map(
             (element) =>
@@ -98,7 +89,6 @@ const WhiteBoard = () => {
                   key={element.id}
                   card={element}
                   dragStart={dragStart}
-                  dragEnd={dragEnd}
                 />
               )
           )}
@@ -119,18 +109,10 @@ const WhiteBoard = () => {
         />
         <button onClick={addHandler}>Add Note</button>
 
-        <h1>{card.title}</h1>
-        <h1>{card.time}</h1>
-        <h1>{card.id}</h1>
         {CardList.map(
           (element) =>
             element.status === 0 && (
-              <PostCard
-                key={element.id}
-                card={element}
-                dragStart={dragStart}
-                dragEnd={dragEnd}
-              />
+              <PostCard key={element.id} card={element} dragStart={dragStart} />
             )
         )}
       </div>

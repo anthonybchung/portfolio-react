@@ -1,8 +1,6 @@
 import './post-card.styles.scss';
 
-const PostCard = ({ card, dragStart, dragEnd }) => {
-  console.log(card);
-  console.log('****');
+const PostCard = ({ card, dragStart }) => {
   return (
     <div
       className="post-card"
@@ -10,12 +8,9 @@ const PostCard = ({ card, dragStart, dragEnd }) => {
       onDrag={() => {
         dragStart(card.id);
       }}
-      onDragEnd={() => {
-        dragEnd();
-      }}
     >
       <p>Title: {card.title}</p>
-      <p>Time: {card.time}</p>
+      <p>Time: {card.time}mins</p>
     </div>
   );
 };
