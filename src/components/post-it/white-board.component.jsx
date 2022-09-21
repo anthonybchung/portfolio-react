@@ -57,7 +57,6 @@ const WhiteBoard = () => {
 
   return (
     <div className="white-container">
-      <h2>Drag and Drop</h2>
       <div className="white-board">
         <div
           id="doing"
@@ -65,6 +64,7 @@ const WhiteBoard = () => {
           onDrop={dragDrop}
           onDragOver={dragOver}
         >
+          <h3>Doing</h3>
           {CardList.map(
             (element) =>
               element.status === 'doing' && (
@@ -82,6 +82,7 @@ const WhiteBoard = () => {
           onDragOver={dragOver}
           onDrop={dragDrop}
         >
+          <h3>Completed</h3>
           {CardList.map(
             (element) =>
               element.status === 'completed' && (
@@ -95,6 +96,12 @@ const WhiteBoard = () => {
         </div>
       </div>
       <div className="button-container">
+        <h2>Drag and Drop</h2>
+        <ol>
+          <li>Enter job title and time it will take</li>
+          <li>Create card</li>
+          <li>Drag card to Doing/Completed</li>
+        </ol>
         <input
           type="text"
           onChange={userInput}
@@ -108,13 +115,18 @@ const WhiteBoard = () => {
           name="time"
         />
         <button onClick={addHandler}>Add Note</button>
-
-        {CardList.map(
-          (element) =>
-            element.status === 0 && (
-              <PostCard key={element.id} card={element} dragStart={dragStart} />
-            )
-        )}
+        <div className="card-list">
+          {CardList.map(
+            (element) =>
+              element.status === 0 && (
+                <PostCard
+                  key={element.id}
+                  card={element}
+                  dragStart={dragStart}
+                />
+              )
+          )}
+        </div>
       </div>
     </div>
   );
