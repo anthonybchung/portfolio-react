@@ -46,9 +46,9 @@ const RobotProject = () => {
     const newY = robotPosition.y + move[currentDirection][1];
 
     if (newX >= 0 && newX < 5)
-      setRobotPosition((prev) => ({ ...prev, x: newX }), []);
+      setRobotPosition((prev) => ({ ...prev, x: newX }));
     if (newY >= 0 && newY < 5)
-      setRobotPosition((prev) => ({ ...prev, y: newY }), []);
+      setRobotPosition((prev) => ({ ...prev, y: newY }));
   };
 
   return (

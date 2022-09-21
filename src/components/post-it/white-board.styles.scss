@@ -1,0 +1,37 @@
+.white-container {
+  width: 680px;
+  height: 320px;
+  display: flex;
+  flex-direction: row;
+  .button-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.white-board {
+  width: 550px;
+  height: 320px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: white;
+  border-radius: 5px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: rgba(136, 136, 136, 0.239);
+}
+
+.white-board-container {
+  width: 200px;
+  height: 100%;
+  border-radius: 5px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: rgba(136, 136, 136, 0.239);
+}
+
+input,
+button {
+  margin: 5px 5px;
+  height: 25px;
+}
